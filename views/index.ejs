@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        if(!localStorage.yindao){
+            location.href="/yindao"
+            localStorage.yindao="yes"
+        }
+    </script>
+    <link href="/css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/swiper.min.css">
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/angular-route.min.js"></script>
+    <script src="/js/angular-animate.min.js"></script>
+    <script src="/js/controller.js"></script>
+    <script src="/js/route.js"></script>
+    <script src="/js/swiper.min.js"></script>
+    <script src="/js/mui.min.js"></script>
+    <!--<script src="/js/touch.js"></script>-->
+    <script src="/js/app.js"></script>
+    <title>Document</title>
+</head>
+<body ng-app="workapp" ng-controller="index">
+<div ng-view class="view-animate" style="height: 100%">
+
+</div>
+
+<!--底部导航-->
+<nav class="mui-bar mui-bar-tab">
+    <a class="mui-tab-item" ng-class="{'mui-active':active=='s'}"   ng-click="change('s')" href="#!/">
+        <span class="mui-icon mui-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item" href="#!/tong" ng-class="{'mui-active':active=='t'}"   ng-click="change('t')">
+        <span class="mui-icon mui-icon-person"></span>
+        <span class="mui-tab-label">通讯录</span>
+    </a>
+    <a class="mui-tab-item" href="#!/content" ng-class="{'mui-active':active=='x'}"   ng-click="change('x')">
+        <span class="mui-icon mui-icon-compose"></span>
+        <span class="mui-tab-label">写总结</span>
+    </a>
+    <a class="mui-tab-item" href="#!/set" ng-class="{'mui-active':active=='sz'}"   ng-click="change('sz')">
+        <span class="mui-icon mui-icon-gear"></span>
+        <span class="mui-tab-label">设置</span>
+    </a>
+</nav>
+
+</body>
+<script>
+
+</script>
+</html>

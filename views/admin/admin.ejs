@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>work 后台管理系统</title>
+</head>
+<style>
+    @font-face {
+        font-family: 'iconfont';
+        src: url('/fonts/iconfont.eot');
+        src: url('/fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/iconfont.woff') format('woff'),
+        url('/fonts/iconfont.ttf') format('truetype'),
+        url('/fonts/iconfont.svg#iconfont') format('svg');
+    }
+</style>
+<link rel="stylesheet" href="/css/default.css">
+<link rel="stylesheet" href="/css/admin.css">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/admin.js"></script>
+<body>
+<!--top-->
+<div class="topbox">
+    <div class="top">
+        <div class="topleft">
+            <h1>work后台管理系统</h1>
+        </div>
+        <div class="topright">
+            <a class="returnindex" href="">跳到首页</a>
+            <span><i class="iconfont">&#xe6c5;</i>您好！<%= user%>,欢迎您登录</span>
+            <a href="javascript:;" ng-click="outlogin()"><i class="iconfont">&#xe63b;</i></a>
+        </div>
+    </div>
+</div>
+<!--top end-->
+<!--main-->
+<div class="mainbox">
+    <div class="main">
+        <div class="center">
+            <ul class="fu">
+                <li>
+                    <i class="iconfont">&#xe729;</i>
+                    <a href="javascript:;"><i class="iconfont">&#xe62d;</i>admin</a>
+                    <ul class="son">
+                        <li><a href="/admin/adduser" target="right"><i class="iconfont">&#xe724;</i>添加用户</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="iconfont">&#xe612;</i>
+                    <a href="/admin/edituser" target="right"><i class="iconfont">&#xe69b;</i>用户管理</a>
+                </li>
+                <li>
+                    <i class="iconfont">&#xe729;</i>
+                    <a href="javascript:;"><i class="iconfont">&#xe717;</i>公告管理</a>
+                    <ul class="son">
+                        <li><a href="index.php?m=admin&f=art&a=addnotice" target="right"><i class="iconfont">&#xe724;</i>新增公告</a></li>
+                        <li><a href="index.php?m=admin&f=art&a=shownotice" target="right"><i class="iconfont">&#xe724;</i>修改公告</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="iconfont">&#xe729;</i>
+                    <a href="javascript:;"><i class="iconfont">&#xe717;</i>合作单位</a>
+                    <ul class="son">
+                        <li><a href="index.php?m=admin&f=art&a=addcoop" target="right"><i class="iconfont">&#xe724;</i>新增合作</a></li>
+                        <li><a href="index.php?m=admin&f=art&a=showcoop" target="right"><i class="iconfont">&#xe724;</i>合作管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="show">
+        <iframe src="" frameborder="0" name="right">
+
+        </iframe>
+    </div>
+</div>
+<!--main end-->
+</body>
+</html>

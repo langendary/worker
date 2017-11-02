@@ -1,0 +1,30 @@
+<style>
+    .move{
+        width:70%;
+        height: 100%;
+        background:rgba(0,0,0,.8);
+        transition:0.5s linear all;
+        position: absolute;
+    }
+    .move.on-add {
+        background:white;
+    }
+    .move.on {
+        animation:move 1s linear;
+        background:yellow;
+    }
+    @keyframes move {
+        form{left:-100%}
+        to{left:0}
+    }
+    .move.on-remove {
+        background:black;
+    }
+</style>
+<div ng-class="{on:onOff}" class="move">
+<p>...33333333333333333</p>
+<p>...33333333333333333</p>
+<p>...33333333333333333</p>
+<p>...33333333333333333</p>
+<p>...33333333333333333</p>
+</div>

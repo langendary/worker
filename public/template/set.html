@@ -1,0 +1,72 @@
+<style>
+    .mui-content{
+        border: 1px solid #fff;
+    }
+    .b{
+        margin:1rem auto;
+        width:14rem;
+        height:2.3rem;
+        text-align: center;
+        line-height:1.6rem;
+        left:0;
+        right:0;
+        bottom:0;
+        display: block;
+    }
+    .b a{
+        color: white;
+        font-size:1rem;
+    }
+    .ff{
+        font-size:1rem;
+        color: #c0c0c0
+    }
+    .qr{
+        display: block;
+        margin: 1rem auto;
+    }
+</style>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" ng-click="back()"></a>
+    <h1 class="mui-title">设置</h1>
+</header>
+<div class="mui-content">
+<ul class="mui-table-view">
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="javascript:;">修改信息</a>
+        <div class="mui-collapse-content">
+            <form class="mui-input-group" action="/editinfo">
+                <div class="mui-input-row">
+                    <label>重设密码</label>
+                    <input type="password" class="mui-input-password" placeholder="请输入密码" name="upass">
+                </div>
+                <div class="mui-input-row">
+                    <label>phone</label>
+                    <input type="text" class="mui-input-password" placeholder="请输入手机号" name="uphone">
+                </div>
+                <div class="mui-input-row">
+                    <label>email</label>
+                    <input type="email" class="mui-input-password" placeholder="请输入邮箱" name="uemail">
+                </div>
+                <button type="submit" class="mui-btn mui-btn-success qr" >确认修改</button>
+            </form>
+        </div>
+    </li>
+</ul>
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell mui-collapse">
+            <a class="mui-navigate-right" href="javascript:;">关于我们</a>
+            <div class="mui-collapse-content ff">
+                荣获：打不死的小强称号<br>
+                座右铭:之所以努力的原因是不想让未来的自己讨厌现在的自己
+            </div>
+        </li>
+    </ul>
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell mui-collapse">
+            <a class="mui-navigate-right" href="javascript:;">版本信息</a>
+            <div class="mui-collapse-content">w-1.0.0s</div>
+        </li>
+    </ul>
+<div class="mui-btn mui-btn-danger b"><a href="/clearsession">退出登录</a></div>
+</div>

@@ -1,0 +1,19 @@
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" ng-click="back()"></a>
+    <h1 class="mui-title">工作总结</h1>
+</header>
+<div class="mui-content">
+<form action="/contents" method="post" class="mui-input-group" style="border:1px solid #fff">
+    <div style="text-align: center;margin:0 auto;border-bottom:1px solid #c0c0c0;color:#aaa">收件人：
+    <select name="select" id="select_k1" style="width: 70%;color:#aaa;border: 1px solid #cccccc;margin: 0">
+        <option  ng-repeat="item in data" value="{{item.uid}}" style="color:#aaa;width: 100%;border: 1px solid #e5e5e5">{{item.uname}}({{item.ubumen}})</option>
+    </select>
+    </div>
+        <div class="mui-input-row">
+            <label style="font-size:1rem;color:#aaa">标题：</label>
+            <input type="text" class="mui-input-clear" placeholder="请输入标题" name="ctitle" ng-model="obj.title">
+        </div>
+    <textarea name="con" id="" cols="80" rows="10" placeholder="开写啦~" ng-model="obj.con"></textarea>
+    <button type="submit" class="mui-btn mui-btn-success" style="width:40%;margin: 1rem auto;display: block">确认提交</button>
+</form>
+</div>

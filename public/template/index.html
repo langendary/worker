@@ -1,0 +1,192 @@
+<style>
+    .new{
+        background: url("../imgs/new.png") no-repeat 1rem;
+        background-size:contain;
+        font-size:1rem;
+        color: #8c8c8c;
+        width: 100%;
+        padding:0.5rem 0 0.5rem 3rem;
+        height:1.5rem;
+    }
+    .xq{
+        width: 1rem;
+        height: 1.1rem;
+        float: right;
+        background: url("../imgs/xq.png") no-repeat center center;
+        background-size:contain;
+    }
+    .mui-table-view{
+        margin-top:1rem;
+    }
+    .in{
+        width: 100%;
+        background: rgba(0,0,0,.5);
+        color: white;
+        font-size:1rem;
+        padding:1rem 1rem;
+        position: absolute;
+        z-index: 10;
+    }
+    .in:after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .in .gg{
+        background: url("../imgs/gg.png") no-repeat left;
+        background-size: contain;
+        background-origin: padding-box;
+        width:26%;
+        float: left;
+        height: 1.2rem;
+        padding-left:1.6rem;
+    }
+    .g{
+        line-height:0.6rem;
+        font-size:0.8rem;
+        padding-top:0.2rem;
+    }
+    .mm{
+        width: 80%;
+        height:100%;
+        background:rgba(0,0,0,.8);
+        position: absolute;
+        top:0;
+        z-index: 100;
+        border-radius:0 0.6rem 0.6rem 0;
+        transition: left .2s linear;
+    }
+    .ll{
+        position:absolute;
+        transition:right .3s linear;
+        animation:le 1s infinite;
+        right: 0;
+        width:10%;
+        height: 100%;
+        background:url("../imgs/ll.png") no-repeat center center;
+        background-size:contain;
+    }
+    @keyframes le {
+      0%{
+          right:0.1rem;
+      }
+        40%{
+            right: 0.2rem;
+        }
+        70%{
+            right:0.1rem
+        }
+        100%{
+            right: 0;
+        }
+    }
+    .cc{
+        width: 90%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        padding: 1rem;
+        border-bottom: 1px solid #fff;
+    }
+    .gsicon{
+        width:4rem;
+        height: 4rem;
+        overflow: hidden;
+        position: absolute;
+        background:url("../imgs/icon.jpg") no-repeat center center;
+        background-size:cover;
+    }
+    .cc h3{
+        color: white;
+        position: absolute;
+        right: -1rem;
+        font-size:1rem;
+        text-align: center;
+        height:4rem;
+        line-height: 4rem;
+    }
+    .cc h4{
+        color: white;
+        position: absolute;
+        font-size:1rem;
+        text-align: center;
+        top:6rem;
+        border:1px solid #fff;
+        padding:0.5rem 1rem;
+        background:rgba(255,255,255,.4);
+    }
+    .cc h5{
+        color: white;
+        position: absolute;
+        font-size:1rem;
+        text-align: center;
+        top:20rem;
+        border:1px solid #fff;
+        padding:0.5rem 1rem;
+        background:rgba(255,255,255,.4);
+    }
+    .co{
+        position: absolute;
+        top:10rem;
+        color: white;
+    }
+    .co1{
+        position: absolute;
+        top:24rem;
+        color: white;
+    }
+</style>
+<link rel="stylesheet" href="../css/index.css">
+        <header class="mui-bar mui-bar-nav">
+            <a href="javascript:;" id="me" class="mui-icon mui-icon-bars mui-pull-left"></a>
+            <h1 class="mui-title">I WORK</h1>
+            <a class="mui-pull-right mui-icon mui-icon-contact" href="#!/grzx"></a>
+            <span class="span"></span>
+        </header>
+     <!--左侧菜单栏-->
+        <div class="mm">
+             <div class="cc">
+                 <div class="gsicon"></div>
+                 <h3>山西赛特科技有限公司</h3>
+                 <h4>公司简介</h4>
+                 <div class="co">山西赛特网络科技有限公司, 是一家以高科技创意为核心的技术服务公司, 聚集了众多对软件开发和界面设计有独特创意的才人, 致力于为企业提供软件开发, 网站建设, 网页设计, IT外包, 手机应用开发, 互联网营销, 微信平台开发等解决方案.</div>
+                 <h5>公司文化</h5>
+                 <dic class="co1">专注、极致、口碑,打造一流的互联网产品</dic>
+             </div>
+             <div class="ll"></div>
+        </div>
+     <!--主体内容-->
+        <div class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <!-- 主界面具体展示内容 -->
+                <!--轮播图-->
+                <div class="swiper-container">
+                    <div class="in">
+                        <span class="gg">公告：</span>
+                        <span class="g">节假日安排休息几天，旅个游，祝我公司所有员工开心每一天！</span>
+                    </div>
+                <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image:url(../imgs/1b.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(../imgs/2b.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(../imgs/3b.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(../imgs/4b.jpg)"></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                </div>
+                <!--列表-->
+                <div class="new">最新动态</div>
+                <ul class="mui-table-view">
+                <li class="mui-table-view-cell mui-media" ng-repeat="item in data">
+                <a href="#!/show/{{item.cid}}">
+                <img class="mui-media-object mui-pull-left" ng-src="{{item.uimg}}">
+                <div class="mui-media-body">
+                {{item.ctitle}}
+                <p class="mui-ellipsis">{{item.con}}</p>
+                </div>
+                    <div class="xq"></div>
+                </a>
+                </li>
+                </ul>
+            </div>
+        </div>

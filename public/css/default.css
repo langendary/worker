@@ -1,0 +1,18 @@
+html,body,ul,li,p,h1,h2,h3,h4,h5,h6,input,dd,dl,dt{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+body{
+	font-family: "Microsoft Yahei",Arial;
+	font-size:14px;
+	color:#333;
+}
+a{
+	color:#333;
+	text-decoration: none;
+}
+
+img{
+	border:0;
+}

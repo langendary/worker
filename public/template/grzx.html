@@ -1,0 +1,145 @@
+<script src="../../../../../5.5-master/public/js/controllers.js"></script>
+<style>
+    .info{
+        overflow: hidden;
+        padding:2rem 0;
+    }
+    .toux{
+        width:14rem;
+        text-align: center;
+        margin:0.8rem auto;
+    }
+    .toux:after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .line{
+        width:3rem;
+        height:0.1rem;
+        border: 1px solid #ccc;
+        float:left;
+        margin-top:3rem;
+    }
+    .toux a{
+        float: left;
+        width:6rem;
+        height:6rem;
+        overflow: hidden;
+        border-radius: 50%;
+        margin:0 0.6rem;
+    }
+    .toux a img{
+        width: 100%;
+    }
+    .zuoyouming{
+        width:100%;
+        height: auto;
+        float: left;
+        font-size:12px;
+        color: #3c3c3c;
+        margin-top: 0.5rem;
+    }
+    .l{
+        margin-left:0.3rem;
+    }
+    #upload{
+        width: 10%;
+        height: 10%;
+        border: none;
+        border-radius: 50%;
+        background: rgba(0,0,0,.3);
+        position: absolute;
+    }
+    #ffs{
+        position: absolute;
+        width:6rem;
+        height: 6rem;
+        border-radius: 50%;
+        right:0;
+        left: 0;
+        margin:0.8rem auto;
+        opacity: 0;
+    }
+    .del{
+        float: right;
+        margin-right:-3.4rem;
+    }
+    .mui-table-view-cell.mui-collapse .mui-collapse-content{
+        padding: 0;
+        padding-left:1rem;
+        overflow: visible;
+        transition:left .3s linear;
+    }
+    .mui-table-view-cell.mui-collapse .mui-collapse-content:after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .nr{
+        height:2rem;
+        line-height: 2rem;
+    }
+    .nr a{
+        display: block;
+        width:90%;
+        height: 100%;
+        border-bottom:1px dashed #e5e5e5;
+        font-size:0.8rem;
+        color: #3c3c3c;
+        float: left;
+    }
+ #grjj{
+     border: none;
+     background: transparent;
+     font-size:0.8rem;
+     color: #8c8c8c;
+ }
+</style>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" ng-click="back()"></a>
+    <h1 class="mui-title">个人中心</h1>
+</header>
+<div class="mui-content">
+<div class="info">
+    <div class="toux">
+        <span class="line l"></span>
+        <form action="/upload" enctype="multipart/form-data" method="post" id="sss">
+            <input type="file"  id="ffs" name="fulAvatar" />
+        </form>
+        <a href="javascript:;" id="userImg"><img ng-src="{{imageSrc}}" alt="" id="img"></a>
+        <span class="line"></span>
+        <span class="zuoyouming"><textarea  ng-model="grjj" id="grjj"></textarea></span>
+    </div>
+</div>
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell mui-collapse">
+            <a class="mui-navigate-right" href="javascript:;">未读总结 <span class="mui-badge mui-badge-danger xinxi">{{j}}</span></a>
+            <div class="mui-collapse-content" ng-repeat="item in jj" id="{{item.cid}}" >
+                <div class="nr"><a href="#!/show/{{item.cid}}" >{{item.ctitle}}</a>
+                    <button type="button" class="mui-btn mui-btn-danger del" ng-click="del(item.cid)">删除</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell mui-collapse">
+            <a class="mui-navigate-right" href="javascript:;">已读总结 <span class="mui-badge mui-badge-success">{{yd}}</span></a>
+            <div class="mui-collapse-content" ng-repeat="item in ydc" id="{{item.cid}}">
+                <div class="nr"><a href="#!/show/{{item.cid}}">{{item.ctitle}}</a>
+                    <button type="button" class="mui-btn mui-btn-danger del" ng-click="del(item.cid)">删除</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell mui-collapse">
+            <a class="mui-navigate-right" href="javascript:;">发送总结 <span class="mui-badge mui-badge-success">{{f}}</span></a>
+            <div class="mui-collapse-content" ng-repeat="item in ff" id="{{item.cid}}">
+                <div class="nr"><a href="#!/show/{{item.cid}}">{{item.ctitle}}</a>
+                    <button type="button" class="mui-btn mui-btn-danger del" ng-click="del(item.cid)">删除</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

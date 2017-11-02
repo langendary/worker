@@ -1,0 +1,45 @@
+<style>
+    h2{
+        text-align: center;
+        width: 100%;
+        color:#c0c0c0;
+    }
+    h6{
+        width: 100%;
+        text-align: center;
+        font-weight:400;
+    }
+    h5{
+        text-indent:2em;
+        font-size:1.3rem;
+        margin:1rem 0;
+    }
+    .ss{
+        text-align: center;
+        width:100%;
+    }
+    h6{
+        text-align: center;
+        width:100%;
+    }
+</style>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" ng-click="back()"></a>
+    <h1 class="mui-title">个人中心</h1>
+</header>
+<div class="mui-content">
+    <div class="mui-card">
+    <!--页眉，放置标题-->
+    <div class="mui-card-header">
+        <h2>{{title}}</h2>
+    </div>
+    <h6>作者：{{name}}</h6>
+    <!--内容区-->
+    <div class="mui-card-content">
+        <h5>{{con}}</h5>
+    </div>
+    <!--页脚，放置补充信息或支持的操作-->
+        <h6>{{time}}</h6>
+    <div class="mui-card-footer ss">休息休息~~~</div>
+    </div>
+</div>

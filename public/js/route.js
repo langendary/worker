@@ -1,0 +1,30 @@
+/**
+ * Created by Administrator on 2017/5/6.
+ */
+angular.module("Route",["ngRoute"]).config(['$routeProvider',function(route){
+    route.when("/",{
+        templateUrl:"/template/index.html",
+        controller:"index"
+    }).when("/tong",{
+        templateUrl:"/template/tong.html",
+        controller:"cons"
+    }).when("/content",{
+        templateUrl:"/template/content.html",
+        controller:"content"
+    }).when("/set",{
+        templateUrl:"/template/set.html",
+        controller:"set"
+    }).when("/menu",{
+        templateUrl:"/template/menu.html",
+        controller:"menu"
+    }).when("/grzx",{
+        templateUrl:"/template/grzx.html",
+        controller:"grzx"
+    }).when("/show/:id",{
+        templateUrl:"/template/show.html",
+        controller:"show"
+    }).when("/messages/:id",{
+        templateUrl:"/template/messages.html",
+        controller:"messages"
+    })
+}]);

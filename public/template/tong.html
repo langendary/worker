@@ -1,0 +1,38 @@
+<style>
+    .messages{
+        display: block;
+        background: url("../imgs/message.png") no-repeat center center;
+        height: 19px;
+        width: 19px;
+        position: absolute;
+        top:0;
+        bottom:0;
+        right:25px;
+        margin: auto;
+    }
+</style>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" ng-click="back()"></a>
+    <h1 class="mui-title">通讯录</h1>
+</header>
+<div class="mui-content">
+    <div class="mui-input-row mui-search">
+        <input type="search" class="mui-input-clear" placeholder="搜索...." ng-model="search">
+        <span class="mui-icon mui-icon-clear mui-hidden"></span>
+        <!--<span class="mui-placeholder">-->
+            <!--<span class="mui-icon mui-icon-search"></span>-->
+            <!--<span></span>-->
+        <!--</span>-->
+    </div>
+    <ul class="mui-table-view">
+                <li class="mui-table-view-cell mui-collapse" ng-repeat="item in data | filter:{uname:search}">
+                    <a class="mui-navigate-right" href="javascript:;">{{item.uname}}</a>
+                    <div class="mui-collapse-content">
+                        <p>所属部门：{{item.ubumen}}
+                        <p>联系电话：<a href="tel:{{item.uphone}}">{{item.uphone}}</a></p>
+                        <i class="messages" ng-click="messages(item.uid,item.user)"></i>
+                    </div>
+
+                </li>
+            </ul>
+</div>
