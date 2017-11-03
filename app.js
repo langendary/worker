@@ -1,7 +1,5 @@
 ﻿var express = require('express'); //引入express
 var path = require('path');//引入path
-const dgram = require('dgram');
-const server = dgram.createSocket('udp4');
 // var favicon = require('serve-favicon');//引入appicon
 // var logger = require('morgan');//引入报错日志
 var session=require('express-session');
@@ -12,6 +10,8 @@ var index = require('./routes/index');//引入自定义路由主页js
 var admin = require('./routes/admin');//引入自定义路由用户js
 var app = express();//启动express
 // view engine setup
+var http=require('http').Server(app);
+var io=require('socket.io')(http)
 app.use(session({
     secret: 'keyboard cat',
     resave: true,
@@ -47,20 +47,27 @@ app.use(express.static(path.join(__dirname, 'public')));//定义公共默认路�
 app.use('/',index);//设置前台js文件的路径
 app.use('/admin',admin);//设置后台js文件的路径
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next){
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
-// error handler
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
-app.listen(8080);
-module.exports = app
+var userObj={},userArr=[];  //在线人数socket对象,在线人数用户名数组
+io.on('connection', function(socket){ //建立socket链接
+    socket.on('chat message', function(res){   //监听有人发消息事件
+        if(res.recid in userObj) {   //
+            userObj[res.recid].emit('receive private message', res);
+        }
+    });
+    socket.on('new',function (user) {
+        socket.username=user;
+        userObj[user]=socket;
+        userArr.push(user);
+        socket.emit('login',userArr,userArr.length);
+        socket.broadcast.emit('logined',user);
+    })
+    socket.on('disconnect', function () {
+        if(socket.username in userObj){
+            delete(userObj[socket.username]);
+            userArr.splice(userArr.indexOf(socket.username), 1);
+        }
+        socket.broadcast.emit('user left',socket.username)
+    });
+});
+http.listen(8080);
+module.exports = http

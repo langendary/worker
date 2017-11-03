@@ -13,5 +13,8 @@
     "express-session": "^1.15.2",
     "formidable": "^1.1.1",
     "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "socket.io": "^2.0.4"
   }
 }

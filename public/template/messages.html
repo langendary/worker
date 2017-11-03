@@ -18,3 +18,52 @@
         <div class="mui-card-footer ss">休息休息~~~</div>
     </div>
 </div>
+<ul class="userlist">
+
+</ul>
+<ul id="messages"></ul>
+
+<input id="m" autocomplete="off" /><button id="btn">发送</button>
+
+<script>
+    $(function () {
+            var socket = io.connect('ws://localhost:3000');
+            setTimeout(function () {
+                socket.emit('new', myuser)
+            }, 0)
+            var myuser = name;
+            var userlist = $(".userlist")
+            socket.on('login', function (user,index) {
+                if (index >= 1) {
+                    for (var i = 0; i < index; i++) {
+                        var str = `<li id=${user[i]}>${user[i]}</li>`
+                        userlist.append(str)
+                    }
+                }
+            })
+            socket.on('logined',function (user) {
+                var str = `<li id=${user}>${user}</li>`
+                userlist.append(str)
+            })
+            var nowid = 0;
+            $('.userlist').on('click', 'li', function () {
+                nowid = $(this)[0].innerText
+            })
+            socket.on('receive private message', function (res) {
+                var str = `<li>${res.myid}:${res.con}</li>`
+                $("#messages").append(str)
+            })
+            $('#btn').click(function () {
+                var option = {
+                    'myid': myuser,
+                    'recid': nowid,
+                    'type': 'plain',
+                    'con': $("#m").val(),
+                }
+                socket.emit('chat message', option);
+            });
+            socket.on('user left',function (res) {
+                $('#'+res).remove()
+            })
+    })
+</script>
