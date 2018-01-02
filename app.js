@@ -12,6 +12,42 @@ var app = express();//启动express
 // view engine setup
 var http=require('http').Server(app);
 var io=require('socket.io')(http)
+var userObj={},userArr=[],messages=[]; //在线人数socket对象,在线人数用户名数组
+io.on('connection', function(socket){ //建立socket链接
+    socket.on('getcontent',function (res) { //获取消息队列
+        var con=[];
+        messages.forEach(function (i) {
+            if(i.recid===res){
+                con.push(i);
+                delete i;
+            }
+            socket.emit('getcon',con)
+        })
+    })
+    socket.on('chat message', function(res){   //监听有人发消息事件
+            messages.push(res)
+            if(userObj[res.recid]){
+                userObj[res.recid].emit('receive private message',res);
+            }
+    });
+    socket.on('new',function (user){//有新用户登陆
+        if(user.user in userObj){
+            return;
+        }
+        socket.username=user.user;
+        userObj[user.user]=socket;
+        userArr.push(user.user);
+        socket.emit('login',userArr,userArr.length);
+        socket.broadcast.emit('logined',user.user,userArr,userArr.length);
+    })
+    socket.on('disconnect', function (){
+        if(socket.username in userObj){
+            delete(userObj[socket.username]);
+            userArr.splice(userArr.indexOf(socket.username), 1);
+        }
+        socket.broadcast.emit('user left',socket.username,userArr);
+    });
+});
 app.use(session({
     secret: 'keyboard cat',
     resave: true,
@@ -47,27 +83,5 @@ app.use(express.static(path.join(__dirname, 'public')));//定义公共默认路�
 app.use('/',index);//设置前台js文件的路径
 app.use('/admin',admin);//设置后台js文件的路径
 
-var userObj={},userArr=[];  //在线人数socket对象,在线人数用户名数组
-io.on('connection', function(socket){ //建立socket链接
-    socket.on('chat message', function(res){   //监听有人发消息事件
-        if(res.recid in userObj) {   //
-            userObj[res.recid].emit('receive private message', res);
-        }
-    });
-    socket.on('new',function (user) {
-        socket.username=user;
-        userObj[user]=socket;
-        userArr.push(user);
-        socket.emit('login',userArr,userArr.length);
-        socket.broadcast.emit('logined',user);
-    })
-    socket.on('disconnect', function () {
-        if(socket.username in userObj){
-            delete(userObj[socket.username]);
-            userArr.splice(userArr.indexOf(socket.username), 1);
-        }
-        socket.broadcast.emit('user left',socket.username)
-    });
-});
 http.listen(8080);
 module.exports = http

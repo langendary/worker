@@ -10,6 +10,12 @@
         right:25px;
         margin: auto;
     }
+    .shows{
+        display: inline-block;
+    }
+    .hides{
+        display: none;
+    }
 </style>
 <header class="mui-bar mui-bar-nav">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" ng-click="back()"></a>
@@ -26,13 +32,12 @@
     </div>
     <ul class="mui-table-view">
                 <li class="mui-table-view-cell mui-collapse" ng-repeat="item in data | filter:{uname:search}">
-                    <a class="mui-navigate-right" href="javascript:;">{{item.uname}}</a>
+                    <a class="mui-navigate-right" href="javascript:;">{{item.uname}} <span style="float: right;margin-right:26px;color:#ccc">({{item.line}})</span></a>
                     <div class="mui-collapse-content">
-                        <p>所属部门：{{item.ubumen}}
+                        <p>所属部门：{{item.ubumen}}</p>
                         <p>联系电话：<a href="tel:{{item.uphone}}">{{item.uphone}}</a></p>
-                        <i class="messages" ng-click="messages(item.uid,item.user)"></i>
+                        <i class="messages" ng-click="messages(item)"></i>
                     </div>
-
                 </li>
             </ul>
 </div>

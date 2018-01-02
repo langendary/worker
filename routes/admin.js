@@ -67,6 +67,7 @@ router.get('/qrtj',admincheck,function (req,res,next){
     var ubumen=req.query.ubumen;
     var upass=md5(req.query.upass);
     con.query(`insert into user (user,upass,uname,uphone,uemail,ubumen) values ('${user}','${upass}','${uname}','${uphone}','${uemail}','${ubumen}')`,function (err,result) {
+        console.log(err)
         if(result.affectedRows>0){
             res.end();
         }else{

@@ -15,7 +15,7 @@ function check(req,res,next){
     }
 }
 router.get('/',check,function(req,res,next){
-    res.render('index');
+    res.render('index',{userInfo:JSON.stringify(req.session.user)});
 });
 router.get('/yindao',function (req,res,next){
     res.render('yindao');
@@ -63,8 +63,8 @@ router.get('/checklogin',function (req,res){
          });
     });
 router.get('/telphone',check,function (req,res){
-    var uid=req.session.user.uid
-    con.query(`select * from user where uid!=${uid}`,function (err,result){
+    var u=req.query.username;
+    con.query(`select * from user where user!='${u}'`,function (err,result){
            res.send(JSON.stringify(result));
     })
 });

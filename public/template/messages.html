@@ -1,69 +1,62 @@
+<style>
+    .myMessages{
+        margin-right:10px;
+    }
+    .messages{
+
+        margin-left: 10px;
+    }
+    #messages{
+        padding:0 1rem;
+        height: 100%;
+        height: 31.6rem;
+        border-radius:0.5rem;
+        /*overflow-y:auto;*/
+    }
+    .recImg{
+        width:2rem;
+        height: 2rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .recImg img{
+        width: 1.5rem;
+    }
+    .times{
+        color: #cccccc;
+    }
+    .inputs{
+        position: fixed;
+        width: 100%;
+        bottom:50px;
+        z-index: 10;
+        padding:1rem 0.5rem;
+    }
+    #m{
+        width: 80%;
+        height: 2.5rem;
+        border:1px solid #e5e5e5;
+        border-radius:0.3rem;
+    }
+    #btn{
+        width:19%;
+        height: 2.5rem;
+        background:#2ac845;
+        color: white;
+    }
+</style>
 <header class="mui-bar mui-bar-nav">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:;" ng-click="back()"></a>
     <h1 class="mui-title">消息</h1>
 </header>
-<div class="mui-content">
-    <div class="mui-card">
-        <!--页眉，放置标题-->
-        <div class="mui-card-header">
-            <h2>{{title}}</h2>
-        </div>
-        <h6>作者：{{name}}</h6>
-        <!--内容区-->
-        <div class="mui-card-content">
-            <h5>{{con}}</h5>
-        </div>
-        <!--页脚，放置补充信息或支持的操作-->
-        <h6>{{time}}</h6>
-        <div class="mui-card-footer ss">休息休息~~~</div>
+<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+    <div class="mui-scroll">
+        <!--数据列表-->
+        <ul class="mui-table-view mui-table-view-chevron" id="messages">
+
+        </ul>
     </div>
 </div>
-<ul class="userlist">
-
-</ul>
-<ul id="messages"></ul>
-
-<input id="m" autocomplete="off" /><button id="btn">发送</button>
-
-<script>
-    $(function () {
-            var socket = io.connect('ws://localhost:3000');
-            setTimeout(function () {
-                socket.emit('new', myuser)
-            }, 0)
-            var myuser = name;
-            var userlist = $(".userlist")
-            socket.on('login', function (user,index) {
-                if (index >= 1) {
-                    for (var i = 0; i < index; i++) {
-                        var str = `<li id=${user[i]}>${user[i]}</li>`
-                        userlist.append(str)
-                    }
-                }
-            })
-            socket.on('logined',function (user) {
-                var str = `<li id=${user}>${user}</li>`
-                userlist.append(str)
-            })
-            var nowid = 0;
-            $('.userlist').on('click', 'li', function () {
-                nowid = $(this)[0].innerText
-            })
-            socket.on('receive private message', function (res) {
-                var str = `<li>${res.myid}:${res.con}</li>`
-                $("#messages").append(str)
-            })
-            $('#btn').click(function () {
-                var option = {
-                    'myid': myuser,
-                    'recid': nowid,
-                    'type': 'plain',
-                    'con': $("#m").val(),
-                }
-                socket.emit('chat message', option);
-            });
-            socket.on('user left',function (res) {
-                $('#'+res).remove()
-            })
-    })
-</script>
+<div class="inputs">
+    <input id="m" autocomplete="off" /><button id="btn">发送</button>
+</div>
