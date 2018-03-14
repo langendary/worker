@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>work 后台管理系统</title>
+</head>
+<script src="/js/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<body>
+    <input type="text" maxlength="100" id='titles' value=''>
+    <input type="button" value="提交修改" class="btn btn-success ss">
+</body>
+<script>
+    $('.ss').click(function(){
+    	$.ajax({
+    		method:'post',
+    		url:'/admin/addtitles',
+    		data:{'val':$('#titles').val()},
+    		success:function(res){
+                console.log(res);
+    		}
+    	})
+    })
+</script>
+</html>

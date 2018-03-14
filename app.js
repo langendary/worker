@@ -10,6 +10,10 @@ var index = require('./routes/index');//引入自定义路由主页js
 var admin = require('./routes/admin');//引入自定义路由用户js
 var app = express();//启动express
 // view engine setup
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+});
 var http=require('http').Server(app);
 var io=require('socket.io')(http)
 var userObj={},userArr=[],messages=[]; //在线人数socket对象,在线人数用户名数组

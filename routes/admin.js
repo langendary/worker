@@ -26,6 +26,15 @@ router.get('/admina',function(req, res, next){//app.js中设置了use(/admin,adm
 router.get('/adduser',function (req,res,next){
     res.render("admin/adduser")
 });
+router.get('/addtitle',function(req,res,next){
+    res.render('admin/addtitle');
+})
+router.post('/addtitles',function(req,res){
+    var val = req.body.val;
+    con.query(`update titles set title='${val}'`,function(err,result){
+        res.end(JSON.stringify(result));
+    })
+})
 router.get('/checkadmin',function (req,res){
     var user=req.query.user;
     var upass=md5(req.query.upass);

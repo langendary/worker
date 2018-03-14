@@ -3,12 +3,13 @@
  */
 angular.module("Controllers",["messageServer"]).controller("index",["$scope","$http","message","$rootScope",function ($scope,$http,message,$rootScope) {
     $http({url:"/indexc"}).then(function (data){
-        $scope.data=data.data;
+        $scope.data=data.data.r;
         for(var i=0;i<$scope.data.length;i++){
             if($scope.data[i].uimg==""){
                 $scope.data[i].uimg="../imgs/3.jpg"
             }
         }
+        $scope.indextitle = data.data.t[0].title;
     });
     localStorage.userInfos=$("#hiden").val();
     var swiper = new Swiper('.swiper-container',{

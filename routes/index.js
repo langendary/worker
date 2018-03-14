@@ -26,8 +26,13 @@ router.get('/login',function (req,res){
 });
 router.get("/indexc",function (req,res){
     var limitid=req.query.cid?req.query.cid:0;
+    var obj = {};
     con.query(`select cid,con,ctitle,uimg from cons,user where cons.fid=user.uid order by cid desc`,function (err,result){
-        res.send(JSON.stringify(result))
+        obj.r = result;
+        con.query('select title from titles', function(err,results){
+             obj.t = results
+             res.send(JSON.stringify(obj))
+        })
    })
 });
 router.get('/checklogin',function (req,res){
